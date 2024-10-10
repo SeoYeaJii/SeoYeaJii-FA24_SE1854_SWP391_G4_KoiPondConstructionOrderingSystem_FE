@@ -13,7 +13,7 @@ const sections = [
     title: "About Us",
     items: [
       {href: "/", text: "Home"},
-      {href: "/", text: "Pricing"},
+      {href: "/", text: "Services"},
       {href: "/", text: "About"},
       {href: "/", text: "Contact"},
     ],
@@ -36,17 +36,11 @@ const contact = {
   ],
 }
 const Footer = () => {
-  // useEffect(() => {
-  //   AOS.init({
-  //     once: true,
-  //     duration: 400,
-  //     easing: "ease-in-out",
-  //   });
-  // }, []);
+
   return (
     <div className="w-full min-h-[336px] phone:min-h-[329px] flex-shrink-0 z-50 bg-[#056839] pt-[5vw]">
       <div
-        className="w-[79.17%] tablet:w-[90%] phone:w-[90%] flex phone:flex-col justify-start items-start gap-[100px] phone:gap-[15px] mx-auto relative" data-aos="fade-up">
+        className="w-[79.17%] tablet:w-[90%] phone:w-[90%] flex phone:flex-col justify-start items-start gap-[100px] phone:gap-[15px] mx-auto relative" >
         <div className="flex flex-col justify-start items-start gap-12 w-[17.2%]">
           <div className="flex gap-[10px]">
             <img src={Logo}  alt="BodyUp logo" width="130" height="100"/>
@@ -63,26 +57,26 @@ const Footer = () => {
         <div className="flex justify-start items-start gap-20 w-[74.5%] phone:w-full">
           {sections.map((section, index) => (
             <div className="flex gap-[15px] w-full flex-col phone:hidden" key={index}>
-              <Typography variant={"medium"} color={"yellow---pre-1"} fontWeight={"bold"}
+              <Typography variant={"medium"} fontWeight={"bold"}
                           className="uppercase phone:!text-[16px]">{section.title}</Typography>
               <div className="flex flex-col gap-[10px]">
                 {section.items.map((item, key) => (
                   <div className="flex gap-[10px] cursor-pointer" key={`item-${key}`}>
                     
-                    <Typography variant={"medium"} color={"gray-A0"}>{item.text}</Typography>
+                    <Typography variant={"medium"}>{item.text}</Typography>
                   </div>
                 ))}
               </div>
             </div>
           ))}
           <div className="flex gap-[15px] w-full flex-col">
-            <Typography variant={"medium"} color={"yellow---pre-1"} fontWeight={"bold"}
+            <Typography variant={"medium"} fontWeight={"bold"}
                         className="uppercase !text-[16px]">{contact.title}</Typography>
             <div className="flex flex-col gap-[10px]">
               {contact.items.map((item, index) => (
                 <div className="flex gap-[10px] cursor-pointer items-start" key={index}>
                   <img src={item.icon} alt="" className="mt-1" width="17" height="17"/>
-                  <Typography variant={"medium"} color={"gray-A0"}>{item.text}</Typography>
+                  <Typography variant={"medium"}>{item.text}</Typography>
                 </div>
               ))}
             </div>

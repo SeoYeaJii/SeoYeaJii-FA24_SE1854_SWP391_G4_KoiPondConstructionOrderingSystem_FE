@@ -11,8 +11,8 @@ export const menus: Menus = [
     slug: "/",
   },
   {
-    title: "Pricing",
-    slug: "/pricing",
+    title: "Services",
+    slug: "/services",
   },
   {
     title: "About",
