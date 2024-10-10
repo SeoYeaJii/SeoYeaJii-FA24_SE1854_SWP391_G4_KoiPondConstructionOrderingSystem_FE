@@ -27,6 +27,7 @@
       "assets/*": ["src/assets/*"]
 
     }
+    
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
