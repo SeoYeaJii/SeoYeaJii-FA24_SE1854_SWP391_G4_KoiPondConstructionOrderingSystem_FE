@@ -4,7 +4,7 @@ import Shopping from "assets/images/shopping.png";
 import Pond from "assets/images/Pond.png";
 import Typography from "components/typography";
 
-const Construction = () => {
+const Construction_pond = () => {
   return (
     <div className="max-w-[1440px] w-[90%] flex gap-4 mx-auto mt-[150px] phone:flex-col phone:w-[95%]">
       <div className="w-[45%] px-8 phone:w-full ">
@@ -77,4 +77,4 @@ const Construction = () => {
     </div>
   );
 };
-export default Construction;
+export default Construction_pond;

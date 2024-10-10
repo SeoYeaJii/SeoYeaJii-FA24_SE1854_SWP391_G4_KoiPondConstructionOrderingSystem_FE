@@ -1,11 +1,8 @@
 import Mountain from "assets/images/Moms-pond.png";
 import Typography from "components/typography";
-const Favorite2 = () => {
+const Favorite_pond = () => {
   return (
-    <div className="max-w-[1440px] w-[90%] flex gap-4 mx-auto mt-[150px] phone:flex-col phone:w-[95%]">
-      <div className="w-[50%] phone:w-full">
-        <img src={Mountain} alt="" className="w-full" />
-      </div>
+    <div className="max-w-[1440px] w-[90%] flex gap-4 mx-auto mt-[150px] phone:flex-col phone:w-[95%] ">
       <div className="w-[50%] phone:w-full">
         <div className="flex flex-col gap-6">
           <Typography className="text-[38px] font-bold leading-12">
@@ -38,7 +35,10 @@ const Favorite2 = () => {
           </div>
         </div>
       </div>
+      <div className="w-[50%] phone:w-full">
+        <img src={Mountain} alt="" className="w-full" />
+      </div>
     </div>
   );
 };
-export default Favorite2;
+export default Favorite_pond;

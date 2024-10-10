@@ -3,8 +3,11 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import "../../index.css";
 import background from "../../assets/videos/video-background.mp4";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
+  const navigate = useNavigate();
+
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
@@ -15,6 +18,9 @@ const LoginPage = () => {
     username: "",
     password: "",
   });
+
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
 
   // Explicitly typing 'e' as React.ChangeEvent<HTMLInputElement>
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -45,15 +51,44 @@ const LoginPage = () => {
   };
 
   // Explicitly typing 'e' as React.FormEvent<HTMLFormElement>
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (validateForm()) {
       setLoading(true);
       // Simulating API call
-      setTimeout(() => {
-        setLoading(false);
-        alert("Login successful!");
-      }, 2000);
+
+      const response = await fetch("http://localhost:8080/api/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: formData.username,
+          password: formData.password,
+        }),
+      });
+
+      if (response.ok) {
+        setTimeout(async () => {
+          const data = await response.json();
+          console.info(data);
+          localStorage.setItem("token", data.token);
+          console.log(data.token);
+          navigate("/");
+          localStorage.setItem("name", data.name);
+          console.log(data.name);
+        }, 2000);
+
+        setTimeout(() => {
+          setLoading(false);
+          alert("Login successful!");
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          setLoading(false);
+          alert("Login fail!");
+        }, 2000);
+      }
     }
   };
 
@@ -144,7 +179,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full bg-green text-white font-semibold py-2 px-4 rounded-md hover:bg-blue focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
+              className={`w-full bg-green text-black bg-[#076839] font-semibold py-2 px-4 rounded-md hover:bg-[#5C813F] focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
                 loading ? "opacity-75 cursor-not-allowed" : ""
               }`}
             >

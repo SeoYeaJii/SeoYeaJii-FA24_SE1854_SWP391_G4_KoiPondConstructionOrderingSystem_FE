@@ -1,10 +1,10 @@
-import main_img from "assets/images/nhatban.jpg";
+import penhouse from "assets/images/penhouse.jpg";
 
-const MainHome = () => {
+const Landing = () => {
   return (
     <div
       className="relative w-full h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url(${main_img})` }}
+      style={{ backgroundImage: `url(${penhouse})` }}
     >
       <div className="absolute inset-0 bg-black opacity-60"></div>
       <div className="relative flex flex-col items-center justify-center h-full text-center text-white px-4">
@@ -19,4 +19,4 @@ const MainHome = () => {
   );
 };
 
-export default MainHome;
+export default Landing;

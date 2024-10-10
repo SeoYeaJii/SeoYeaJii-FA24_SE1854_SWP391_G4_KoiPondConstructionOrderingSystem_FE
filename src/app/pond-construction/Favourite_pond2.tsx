@@ -1,6 +1,6 @@
 import Mountain from "assets/images/Moms-pond.png";
 import Typography from "components/typography";
-const Favorite2 = () => {
+const Favorite_pond2 = () => {
   return (
     <div className="max-w-[1440px] w-[90%] flex gap-4 mx-auto mt-[150px] phone:flex-col phone:w-[95%]">
       <div className="w-[50%] phone:w-full">
@@ -41,4 +41,4 @@ const Favorite2 = () => {
     </div>
   );
 };
-export default Favorite2;
+export default Favorite_pond2;

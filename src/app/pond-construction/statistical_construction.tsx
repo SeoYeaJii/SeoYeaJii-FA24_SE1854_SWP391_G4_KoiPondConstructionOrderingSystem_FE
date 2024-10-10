@@ -4,7 +4,7 @@ import Fountainscape from "assets/images/Fountainscape.png";
 import Pond from "assets/images/Pond.png";
 import Waterfall from "assets/images/Waterfall.png";
 
-const Statistical = () => {
+const Statistical_Construction = () => {
   const FeatureList = [
     {
       title: "300+",
@@ -55,4 +55,4 @@ const Statistical = () => {
     </div>
   );
 };
-export default Statistical;
+export default Statistical_Construction;
