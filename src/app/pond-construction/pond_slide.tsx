@@ -3,11 +3,11 @@ import Typography from "components/typography/typography";
 import EventImg_1 from "assets/images/penhouse.jpg";
 import EventImg_2 from "assets/images/nhatban.jpg";
 import EventImg_3 from "assets/images/nhatban.jpg";
-import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import "./pond_slide.css"
-import {useState,useEffect} from "react"
-import axios from "axios"
+import "./pond_slide.css";
+import { useState, useEffect } from "react";
+import axios from "axios";
 interface PondConfig {
   constructionTypeId: number;
   minSize: number;
@@ -40,10 +40,12 @@ const Pond_slide = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<PondConfig>('http://localhost:8080/api/template');
+        const response = await axios.get<PondConfig>(
+          "http://localhost:8080/api/template"
+        );
         setData(response.data);
       } catch (error) {
-        setError('Failed to fetch data');
+        setError("Failed to fetch data");
       } finally {
         setLoading(false);
       }
@@ -54,61 +56,59 @@ const Pond_slide = () => {
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  console.log(data)
-  
-
+  console.log(data);
 
   const events = [
     {
-        title: "Base*",
-        price: "$6K",
-        description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
+      title: "Base*",
+      price: "$6K",
+      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
           Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
           Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
           Boulders, Washed Riverstone, Up To 2’ Stream`,
-        image: EventImg_1,
-        completion: "Complete in 1-2 days",
-      },
-      {
-        title: "Base*",
-        price: "$6K",
-        description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
+      image: EventImg_1,
+      completion: "Complete in 1-2 days",
+    },
+    {
+      title: "Base*",
+      price: "$6K",
+      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
           Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
           Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
           Boulders, Washed Riverstone, Up To 2’ Stream`,
-        image: EventImg_2,
-        completion: "Complete in 1-2 days",
-      },
-      {
-        title: "Base*",
-        price: "$6K",
-        description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
+      image: EventImg_2,
+      completion: "Complete in 1-2 days",
+    },
+    {
+      title: "Base*",
+      price: "$6K",
+      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
           Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
           Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
           Boulders, Washed Riverstone, Up To 2’ Stream`,
-        image: EventImg_3,
-        completion: "Complete in 1-2 days",
-      },
-      {
-        title: "Base*",
-        price: "$6K",
-        description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
+      image: EventImg_3,
+      completion: "Complete in 1-2 days",
+    },
+    {
+      title: "Base*",
+      price: "$6K",
+      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
           Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
           Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
           Boulders, Washed Riverstone, Up To 2’ Stream`,
-        image: EventImg_2,
-        completion: "Complete in 1-2 days",
-      },
-      {
-        title: "Base*",
-        price: "$6K",
-        description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
+      image: EventImg_2,
+      completion: "Complete in 1-2 days",
+    },
+    {
+      title: "Base*",
+      price: "$6K",
+      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
           Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
           Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
           Boulders, Washed Riverstone, Up To 2’ Stream`,
-        image: EventImg_1,
-        completion: "Complete in 1-2 days",
-      },
+      image: EventImg_1,
+      completion: "Complete in 1-2 days",
+    },
   ];
 
   const settings = {
@@ -146,14 +146,14 @@ const Pond_slide = () => {
             fontWeight={"bold"}
             className="text-black-06 phone:!text-[24px]"
           >
-           Pond Pricing
+            Pond Pricing
           </Typography>
         </div>
-        
+
         <Slider {...settings} className="w-full mx-auto mt-[50px]">
           {events.map((event, index) => (
             <a
-            href="/contact"
+              href="/contact"
               key={index}
               className="bg-white flex flex-col items-center gap-10 w-full rounded-3xl shadow-md hover:opacity-60"
             >
@@ -198,7 +198,6 @@ const Pond_slide = () => {
             </a>
           ))}
         </Slider>
-        
       </div>
     </div>
   );

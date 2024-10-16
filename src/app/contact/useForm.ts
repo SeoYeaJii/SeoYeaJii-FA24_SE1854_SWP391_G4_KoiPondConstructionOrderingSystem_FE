@@ -1,6 +1,6 @@
-import {useForm} from 'react-hook-form';
-import {yupResolver} from '@hookform/resolvers/yup';
-import * as yup from 'yup';
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 export interface FormValues {
   email: string;
@@ -12,17 +12,20 @@ export interface FormValues {
 }
 
 const defaultValues: FormValues = {
-  email: '',
-  name: '',
-  address: '',
-  content: '',
-  phone: '',
-  service: '', // Khởi tạo rỗng cho dịch vụ
+  email: "",
+  name: "",
+  address: "",
+  content: "",
+  phone: "",
+  service: "", // Khởi tạo rỗng cho dịch vụ
 };
 
 export const useCreateContactForm = () => {
   const schema = yup.object().shape({
-    email: yup.string().email("Email phải là email hợp lệ").required("Email là trường bắt buộc"),
+    email: yup
+      .string()
+      .email("Email phải là email hợp lệ")
+      .required("Email là trường bắt buộc"),
     name: yup.string().required("Họ và tên là trường bắt buộc"),
     address: yup.string().required("Tiêu đề là trường bắt buộc"),
     content: yup.string().required("Nội dung là trường bắt buộc"),
@@ -41,7 +44,7 @@ export const useCreateContactForm = () => {
     defaultValues,
     resolver: yupResolver(schema),
     shouldFocusError: true,
-    mode: 'all',
+    mode: "all",
   });
 
   const onSubmit = async (data: FormValues) => {

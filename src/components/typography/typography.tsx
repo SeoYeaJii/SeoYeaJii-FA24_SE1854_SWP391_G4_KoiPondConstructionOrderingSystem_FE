@@ -1,4 +1,4 @@
-import {ReactNode, HTMLAttributes} from "react";
+import { ReactNode, HTMLAttributes } from "react";
 import clsx from "clsx";
 
 const variantsMapping = {
@@ -36,14 +36,14 @@ interface TypographyProps extends HTMLAttributes<HTMLElement> {
 }
 
 function Typography({
-                      variant,
-                      color,
-                      fontWeight,
-                      className,
-                      children,
-                      href,
-                      ...props
-                    }: TypographyProps) {
+  variant,
+  color,
+  fontWeight,
+  className,
+  children,
+  href,
+  ...props
+}: TypographyProps) {
   const Component = href ? "a" : variant ? variantsMapping[variant] : "p";
 
   return (

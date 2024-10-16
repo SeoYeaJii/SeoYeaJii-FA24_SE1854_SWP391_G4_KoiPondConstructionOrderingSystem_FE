@@ -25,9 +25,7 @@
       "components/*": ["src/components/*"],
       "hooks/*": ["src/hooks/*"],
       "assets/*": ["src/assets/*"]
-
     }
-    
   },
   "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]

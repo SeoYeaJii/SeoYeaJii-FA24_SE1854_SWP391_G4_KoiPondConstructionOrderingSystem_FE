@@ -1,7 +1,4 @@
-const Login = () =>{
-return (
-    <div>bhasdasdasdasds</div>
-)
-
-}
-export default Login
+const Login = () => {
+  return <div>bhasdasdasdasds</div>;
+};
+export default Login;

@@ -6,11 +6,11 @@ import Construction from "./construction";
 export default function Home() {
   return (
     <div>
-     <MainHome/>
-     <Statistical/>
-     <Favorite/>
-     <Favorite2/>
-    <Construction/>
-      </div>
+      <MainHome />
+      <Statistical />
+      <Favorite />
+      <Favorite2 />
+      <Construction />
+    </div>
   );
 }

@@ -3,7 +3,7 @@ import Typography from "components/typography";
 const Favorite2 = () => {
   return (
     <div className="max-w-[1440px] w-[90%] flex gap-4 mx-auto mt-[150px] phone:flex-col phone:w-[95%]">
-         <div className="w-[50%] phone:w-full">
+      <div className="w-[50%] phone:w-full">
         <img src={Mountain} alt="" className="w-full" />
       </div>
       <div className="w-[50%] phone:w-full">
@@ -38,7 +38,6 @@ const Favorite2 = () => {
           </div>
         </div>
       </div>
-     
     </div>
   );
 };

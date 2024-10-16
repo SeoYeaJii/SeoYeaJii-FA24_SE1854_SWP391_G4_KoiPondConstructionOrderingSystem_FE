@@ -16,11 +16,7 @@ function App() {
     <Router>
       <Routes>
         {routes.map(({ path, element }) => (
-          <Route
-            key={path}
-            path={path}
-            element={<Layout>{element}</Layout>}
-          />
+          <Route key={path} path={path} element={<Layout>{element}</Layout>} />
         ))}
         <Route path="/login" element={<Login />} />
       </Routes>

@@ -63,12 +63,13 @@ const Construction = () => {
           </div>
           <div className="flex flex-col w-full gap-6">
             <Typography className="text-[25px] font-bold">
-            3. Enjoy Your New Pond
+              3. Enjoy Your New Pond
             </Typography>
             <Typography>
-            Now is the time to finally enjoy your upgraded space. We will do a final walkthrough of your improved yard and address any concerns you may have. Time to relax and enjoy all the benefits of your water feature.
-
-
+              Now is the time to finally enjoy your upgraded space. We will do a
+              final walkthrough of your improved yard and address any concerns
+              you may have. Time to relax and enjoy all the benefits of your
+              water feature.
             </Typography>
           </div>
         </div>
