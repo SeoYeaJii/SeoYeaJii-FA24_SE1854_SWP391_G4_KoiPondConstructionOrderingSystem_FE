@@ -3,7 +3,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import "../../index.css";
 import background from "../../assets/videos/video-background.mp4";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -71,17 +71,10 @@ const LoginPage = () => {
       if (response.ok) {
         setTimeout(async () => {
           const data = await response.json();
-          console.info(data);
           localStorage.setItem("token", data.token);
-          console.log(data.token);
-          navigate("/");
+          if (data.role == "CUSTOMER") navigate("/");
+          else navigate("/admin");
           localStorage.setItem("name", data.name);
-          console.log(data.name);
-        }, 2000);
-
-        setTimeout(() => {
-          setLoading(false);
-          alert("Login successful!");
         }, 2000);
       } else {
         setTimeout(() => {
@@ -179,7 +172,7 @@ const LoginPage = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full bg-green text-black bg-[#076839] font-semibold py-2 px-4 rounded-md hover:bg-[#5C813F] focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
+              className={`w-full bg-[#076839] text-black font-semibold py-2 px-4 rounded-md hover:bg-[#5C813F] focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 transition-colors ${
                 loading ? "opacity-75 cursor-not-allowed" : ""
               }`}
             >
@@ -205,12 +198,12 @@ const LoginPage = () => {
         <div className="bg-brown bg-opacity-70 py-4 px-6 text-center">
           <p className="text-black">
             Don't have an account?{" "}
-            <a
-              href="#"
+            <Link
+              to="/register"
               className="text-black font-semibold hover:underline focus:outline-none focus:ring-2 focus:ring-blue focus:ring-opacity-50 rounded-sm"
             >
               Sign up
-            </a>
+            </Link>
           </p>
         </div>
       </div>
