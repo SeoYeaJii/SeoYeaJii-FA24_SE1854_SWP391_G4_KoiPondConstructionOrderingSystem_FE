@@ -4,6 +4,7 @@ import Layout from "components/layout/layout.tsx";
 import Login from "./login";
 import Pond_Construction from "./pond-construction";
 import Contact from "./contact";
+import Register from "./register";
 
 const routes = [
   { path: "/", element: <Home /> },
@@ -19,6 +20,7 @@ function App() {
           <Route key={path} path={path} element={<Layout>{element}</Layout>} />
         ))}
         <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
       </Routes>
     </Router>
   );
