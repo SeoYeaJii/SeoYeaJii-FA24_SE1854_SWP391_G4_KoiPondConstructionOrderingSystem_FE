@@ -1,13 +1,13 @@
 import Slider from "react-slick";
 import Typography from "components/typography/typography";
-import EventImg_1 from "assets/images/penhouse.jpg";
-import EventImg_2 from "assets/images/nhatban.jpg";
-import EventImg_3 from "assets/images/nhatban.jpg";
+// import EventImg_1 from "assets/images/penhouse.jpg";
+// import EventImg_2 from "assets/images/nhatban.jpg";
+// import EventImg_3 from "assets/images/nhatban.jpg";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./pond_slide.css";
 import { useState, useEffect } from "react";
-import axios from "axios";
+//import axios from "axios";
 interface PondConfig {
   constructionTypeId: number;
   minSize: number;
@@ -33,19 +33,36 @@ interface PondConfig {
   updateBy: string;
 }
 const Pond_slide = () => {
-  const [data, setData] = useState<PondConfig | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [blog, setBlog] = useState<any>([]);
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
-
+  const token = localStorage.getItem("token");
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get<PondConfig>(
-          "http://localhost:8080/api/template"
-        );
-        setData(response.data);
+        const response = await fetch("http://localhost:8080/api/template", {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          throw new Error(
+            `Failed to fetch data: ${response.status} ${response.statusText}. ${errorText}`
+          );
+        }
+
+        const data = await response.json();
+        setBlog(data);
       } catch (error) {
-        setError("Failed to fetch data");
+        console.error("Error fetching data:", error);
+        setError(
+          error instanceof Error ? error.message : "An unknown error occurred"
+        );
       } finally {
         setLoading(false);
       }
@@ -53,63 +70,11 @@ const Pond_slide = () => {
 
     fetchData();
   }, []);
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>{error}</div>;
 
-  console.log(data);
-
-  const events = [
-    {
-      title: "Base*",
-      price: "$6K",
-      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
-          Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
-          Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
-          Boulders, Washed Riverstone, Up To 2’ Stream`,
-      image: EventImg_1,
-      completion: "Complete in 1-2 days",
-    },
-    {
-      title: "Base*",
-      price: "$6K",
-      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
-          Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
-          Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
-          Boulders, Washed Riverstone, Up To 2’ Stream`,
-      image: EventImg_2,
-      completion: "Complete in 1-2 days",
-    },
-    {
-      title: "Base*",
-      price: "$6K",
-      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
-          Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
-          Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
-          Boulders, Washed Riverstone, Up To 2’ Stream`,
-      image: EventImg_3,
-      completion: "Complete in 1-2 days",
-    },
-    {
-      title: "Base*",
-      price: "$6K",
-      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
-          Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
-          Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
-          Boulders, Washed Riverstone, Up To 2’ Stream`,
-      image: EventImg_2,
-      completion: "Complete in 1-2 days",
-    },
-    {
-      title: "Base*",
-      price: "$6K",
-      description: `Includes: 5×7 Pond, 15×13 and 5×7 Liner, 18’ Underlayment,
-          Signature Series Skimmer, Signature Series Biofalls, Aquasurge Pump 2000,
-          Rock Lid, 25’ 1.5’ Flex PVC, Dual Union Check Valve, 2 Tons Of Granite,
-          Boulders, Washed Riverstone, Up To 2’ Stream`,
-      image: EventImg_1,
-      completion: "Complete in 1-2 days",
-    },
-  ];
+  console.log(blog);
 
   const settings = {
     infinite: true,
@@ -151,15 +116,15 @@ const Pond_slide = () => {
         </div>
 
         <Slider {...settings} className="w-full mx-auto mt-[50px]">
-          {events.map((event, index) => (
+          {blog.map((data: PondConfig) => (
             <a
               href="/contact"
-              key={index}
+              key={data.constructionTypeId}
               className="bg-white flex flex-col items-center gap-10 w-full rounded-3xl shadow-md hover:opacity-60"
             >
               <div className="w-full">
                 <img
-                  src={event.image}
+                  src={data.imageUrl}
                   alt=""
                   className="w-full h-[300px] object-cover rounded-t-3xl"
                 />
@@ -168,7 +133,7 @@ const Pond_slide = () => {
               {/* Phần hiển thị giá */}
               <div className="flex justify-center -mt-16">
                 <div className="bg-[#EBF8F2] text-[#076839] text-[24px] font-bold rounded-full w-[80px] h-[80px] flex items-center justify-center">
-                  {event.price}
+                  {data.description}
                 </div>
               </div>
 
@@ -179,20 +144,20 @@ const Pond_slide = () => {
                   fontWeight={"bold"}
                   className="text-[24px]"
                 >
-                  {event.title}
+                  {data.description}
                 </Typography>
                 <Typography
                   variant={"small"}
                   className="text-gray-600 mt-2 text-sm"
                 >
-                  {event.description}
+                  {data.description}
                 </Typography>
                 <Typography
                   variant={"small"}
                   fontWeight={"bold"}
                   className="text-gray-800 mt-4"
                 >
-                  {event.completion}
+                  {data.description}
                 </Typography>
               </div>
             </a>

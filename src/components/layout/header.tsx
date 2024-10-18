@@ -153,35 +153,11 @@ const Header = () => {
           )}
         </div>
       ) : (
-        <div className="relative">
-          <Typography
-            onClick={toggleUserDropdown}
-            className="cursor-pointer font-bold hover:bg-green"
-          >
-            {name}
-          </Typography>
-          {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-md z-50">
-              <div
-                className="cursor-pointer px-4 py-2 hover:bg-gray-A0"
-                onClick={handleSetting}
-              >
-                User Settings
-              </div>
-              <div
-                className="cursor-pointer px-4 py-2 hover:bg-gray-A0"
-                onClick={handleLogout}
-              >
-                Logout
-              </div>
-            </div>
-          )}
-        </div>
-        //    <a href="/login">
-        //    <button className="mt-[10px] text-black w-[120px] h-[40px] bg-transparent rounded-md border-black border-[1px]">
-        //      Log in
-        //    </button>
-        //  </a>
+        <a href="/login">
+          <button className="mt-[10px] text-black w-[120px] h-[40px] bg-transparent rounded-md border-black border-[1px]">
+            Log in
+          </button>
+        </a>
       )}
 
       <div className="relative desktop:hidden">
